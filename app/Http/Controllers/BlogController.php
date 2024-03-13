@@ -16,9 +16,13 @@ class BlogController extends Controller
 
     public function index()
     {
-        $blogs = Blog::latest()->get();
+        $blogs = Blog::latest();
 
-        return view('blog.blogs', ["blogs" => $blogs]);
+        if (request()->has('search')) {
+            $blogs =  $blogs->where('title', 'like', '%' . request('search') . '%');
+        }
+
+        return view('blog.blogs', ["blogs" => $blogs->get()]);
     }
     public function show($id)
     {

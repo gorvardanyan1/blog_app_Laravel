@@ -19,7 +19,7 @@ Route::get('/', function () {
     return  redirect('/blogs');
 });
 
-Route::get('/blogs', [BlogController::class, 'index'])->middleware('auth');
+Route::get('/blogs', [BlogController::class, 'index'])->middleware('auth')->name('blogs.index');
 Route::get('/blogs/create', [BlogController::class, 'create'])->middleware('auth');
 Route::get('blogs/{id}', [BlogController::class, 'show'])->middleware('auth');
 Route::post('/blogs/store', [BlogController::class, 'store'])->middleware('auth');

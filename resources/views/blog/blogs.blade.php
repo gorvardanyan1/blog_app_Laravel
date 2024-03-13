@@ -3,10 +3,11 @@
 @section('content')
     <div class="alert">
         {{ session('mssg') }}
-       <span style="color: red">{{ session('error') }}</span>
+        <span style="color: red">{{ session('error') }}</span>
     </div>
 
     <div class="blogsContainer">
+        @include('blog.searchBar')
         <a href="/blogs/create">Add Blog</a>
         @foreach ($blogs as $blog)
             <div class="blog">
