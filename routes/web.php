@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,6 +28,7 @@ Route::get('/blogs/edit/{id}', [BlogController::class, 'edit'])->middleware('aut
 Route::put('/blogs/{id}', [BlogController::class, 'update'])->middleware('auth');
 Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->middleware('auth');
 
+Route::post('/blogs/{blog}/comment', [CommentController::class, 'store'])->name('blogs.comments.store')->middleware('auth');
 
 
 Auth::routes();

@@ -9,4 +9,9 @@ class Blog extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'description']; // Add 'title' to the fillable array
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

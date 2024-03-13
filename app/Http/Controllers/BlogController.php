@@ -27,6 +27,9 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = Blog::findOrFail($id);
+
+        // dd($blog->comments);
+
         return view('blog.show', ["blog" => $blog]);
     }
     public function create()

@@ -23,6 +23,7 @@
                     </p>
 
                 </div>
+                @include('blog.comment')
                 <a href="/blogs/{{ $blog->id }}">See Blog</a>
                 <a href="/blogs/edit/{{ $blog->id }}">Edit</a>
                 <form action="/blogs/{{ $blog->id }}" method="post">
