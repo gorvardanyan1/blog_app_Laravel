@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(Blog $blog, Request $request)
+    public function store(Blog $blog)
     {
 
         $validatedData = request()->validate([
@@ -19,10 +19,11 @@ class CommentController extends Controller
         // $comment->content = request()->get('content');
         // $comment->blog_id = $blog->id;
         // $comment->save();
-        $comment = Comment::create(
+        Comment::create(
             [
                 'content' => $validatedData['content'],
-                'blog_id' => $blog->id
+                'blog_id' => $blog->id,
+                'user_id' => auth()->id()
             ]
         );
 

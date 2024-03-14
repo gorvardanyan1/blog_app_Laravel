@@ -12,7 +12,8 @@
                 <form action="{{ route('comments.destroy', $comment->id) }}" method="post">
                     @method('DELETE')
                     @csrf
-                    <p>{{ $comment->content }}</p>
+
+                    <p><i>{{ $comment->user->name }}</i>: {{ $comment->content }}</p>
                     <input type="image" src="/images/cancel.png" alt="Cencel">
                 </form>
             </div>

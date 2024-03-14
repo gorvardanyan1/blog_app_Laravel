@@ -40,7 +40,7 @@ class BlogController extends Controller
     {
         request()->validate([
             'title' => 'required|min:3|max:40',
-            'description' => 'required|min:10|max:300'
+            'description' => 'required|min:10|max:1000000'
         ]);
 
         $blog = new Blog();
