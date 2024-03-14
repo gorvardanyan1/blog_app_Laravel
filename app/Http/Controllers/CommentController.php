@@ -8,13 +8,24 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(Blog $blog)
+    public function store(Blog $blog, Request $request)
     {
 
-        $comment = new Comment();
-        $comment->content = request()->get('content');
-        $comment->blog_id = $blog->id;
-        $comment->save();
+        $validatedData = request()->validate([
+            'content' => 'required|string|min:1|max:255',
+        ]);
+
+        // $comment = new Comment();
+        // $comment->content = request()->get('content');
+        // $comment->blog_id = $blog->id;
+        // $comment->save();
+        $comment = Comment::create(
+            [
+                'content' => $validatedData['content'],
+                'blog_id' => $blog->id
+            ]
+        );
+
         return redirect('/blogs')->with('mssg', 'Comment added');
     }
     public function destroy($id)

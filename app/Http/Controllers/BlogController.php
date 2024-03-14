@@ -38,6 +38,11 @@ class BlogController extends Controller
     }
     public function store()
     {
+        request()->validate([
+            'title' => 'required|min:3|max:40',
+            'description' => 'required|min:10|max:300'
+        ]);
+
         $blog = new Blog();
         $blog->title = request('title');
         $blog->description = request('description');
@@ -58,6 +63,11 @@ class BlogController extends Controller
     }
     public function update($id)
     {
+        request()->validate([
+            'title' => 'required|min:3|max:40',
+            'description' => 'required|min:10|max:300'
+        ]);
+
         $blog = Blog::findOrfail($id);
         $blog->update([
             'title' => request('title'),
