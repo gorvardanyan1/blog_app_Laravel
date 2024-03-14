@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .blogsContainer {
     width: 80%;
     margin: 10px auto;
@@ -76,5 +82,39 @@
         width: 50%;
         margin-right: 5px;
         outline: none;
+    }
+}
+
+.commentsComponent {
+
+    input[type='text'] {
+        border-radius: 5px;
+        outline: none;
+        size: 30;
+    }
+
+    .commentsDiv {
+        width: 50%;
+
+        form {
+            margin-top: 7px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #C9D7DD;
+            border-radius: 10px;
+            padding: 10px 10px;
+            color: #fff;
+            font-size: 19px;
+
+            p {
+                margin-bottom: 0;
+            }
+            input{
+                width: 40px;
+                height: 40px;
+            }
+
+        }
     }
 }

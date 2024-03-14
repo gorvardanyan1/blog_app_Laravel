@@ -1,4 +1,5 @@
 <div class="commentsComponent">
+    <h3>Comments</h3>
     <form action="{{ route('blogs.comments.store', $blog->id) }}" method="post">
         @csrf
         <input type="text" name="content" id="commentTextArea" placeholder="Comment ...">
@@ -6,7 +7,15 @@
     </form>
     <div class="commentsDiv">
         @foreach ($blog->comments as $comment)
-            <p>{{ $comment->content }}</p>
+            <div>
+
+                <form action="{{ route('comments.destroy', $comment->id) }}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <p>{{ $comment->content }}</p>
+                    <input type="image" src="/images/cancel.png" alt="Cencel">
+                </form>
+            </div>
         @endforeach
     </div>
 </div>

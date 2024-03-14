@@ -30,6 +30,7 @@ Route::delete('/blogs/{id}', [BlogController::class, 'destroy'])->middleware('au
 
 Route::post('/blogs/{blog}/comment', [CommentController::class, 'store'])->name('blogs.comments.store')->middleware('auth');
 
+Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware('auth');
 
 Auth::routes();
 

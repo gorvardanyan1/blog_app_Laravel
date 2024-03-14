@@ -17,4 +17,11 @@ class CommentController extends Controller
         $comment->save();
         return redirect('/blogs')->with('mssg', 'Comment added');
     }
+    public function destroy($id)
+    {
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+
+        return redirect('/blogs')->with('mssg', "Comment Deleted");
+    }
 }
