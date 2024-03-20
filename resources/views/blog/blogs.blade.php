@@ -6,6 +6,8 @@
         <span style="color: red">{{ session('error') }}</span>
     </div>
 
+  @include('user.user')
+
     <div class="blogsContainer">
         @include('blog.searchBar')
         <a href="/blogs/create">Add Blog</a>
