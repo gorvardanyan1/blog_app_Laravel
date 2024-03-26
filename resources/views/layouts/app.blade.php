@@ -16,7 +16,7 @@
 
     <!-- Scripts -->
     @viteReactRefresh
-    @vite(['resources/sass/app.scss', 'resources/sass/blogs.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/sass/blogs.scss', 'resources/sass/user.scss', 'resources/js/app.js'])
 </head>
 
 <body>
@@ -57,15 +57,20 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img class="blogAuthorProfileImage"
+                                        src="{{ asset('storage/' . Auth::user()->profileImage) }}" alt="User"
+                                        style="width: 25px; height:25px">
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a href="{{ route('user') }}" class="dropdown-item">Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

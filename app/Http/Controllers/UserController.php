@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+
+    public function show()
+    {
+        return view('user.user', ["user" => Auth::user()]);
+    }
+
     public function edit()
     {
         return view('user.edit');
@@ -37,7 +43,5 @@ class UserController extends Controller
         } else {
             return back()->with('error', 'Failed to update profile.');
         }
-
-
     }
 }

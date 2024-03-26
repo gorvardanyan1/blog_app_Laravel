@@ -6,14 +6,14 @@
         <span style="color: red">{{ session('error') }}</span>
     </div>
 
-    @include('user.user')
+    {{-- @include('user.user') --}}
 
     <div class="blogsContainer">
         @include('blog.searchBar')
         <a href="/blogs/create">Add Blog</a>
         @foreach ($blogs as $blog)
             <div class="blog">
-                <img class="blogAuthorProfileImage" src="{{ asset('storage/' . $blog->user->profileImage) }}" alt="">
+                <img class="blogAuthorProfileImage" src="{{ asset('storage/' . $blog->user->profileImage) }}" alt="" loading="lazy">
                 <div class="title">
                     <i>Title:</i>
                     <h3>{{ $blog->title }}</h3>

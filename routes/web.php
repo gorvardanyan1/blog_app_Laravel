@@ -33,6 +33,7 @@ Route::post('/blogs/{blog}/comment', [CommentController::class, 'store'])->name(
 
 Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware('auth');
 
+Route::get('/user', [UserController::class, 'show'])->name('user');
 Route::get('/user/edit', [UserController::class, 'edit']);
 Route::put('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
 
