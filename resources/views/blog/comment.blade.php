@@ -18,7 +18,10 @@
 
                         <i>{{ $comment->user->name }}</i>: {{ $comment->content }}
                     </p>
+                    @if ($comment->user_id == auth()->id())
                     <input type="image" src="/images/cancel.png" alt="Cencel">
+                    @endif
+
                 </form>
             </div>
         @endforeach

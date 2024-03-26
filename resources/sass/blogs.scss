@@ -8,6 +8,7 @@
     width: 80%;
     margin: 10px auto;
     background-color: #F0ECE5;
+    background-color: #f2f2f2;
     padding: 10px 20px;
     border-radius: 10px;
 
@@ -66,11 +67,24 @@
 
 .showContainer {
     padding: 10px 30px;
+    background-color: #f2f2f2;
 
     h5 {
         text-align: right;
         font-size: 15px;
         font-style: italic;
+    }
+
+    .blogTitle {
+        border-radius: 8px;
+        background-color: #fff;
+        padding: 15px 20px;
+    }
+
+    .description {
+        border-radius: 8px;
+        background-color: #fff;
+        padding: 10px 20px;
     }
 }
 
@@ -139,5 +153,14 @@
 
 .commentsAutorImage {
     width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.blogAuthorProfileImage {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
     border-radius: 50%;
 }

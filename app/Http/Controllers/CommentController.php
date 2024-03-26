@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\CheckBlogOwnership;
 use App\Models\Blog;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Http\Middleware\CheckCommentOwnership;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(CheckCommentOwnership::class)->only(['destroy']);
+    }
+
     public function store(Blog $blog)
     {
 
@@ -15,10 +22,6 @@ class CommentController extends Controller
             'content' => 'required|string|min:1|max:255',
         ]);
 
-        // $comment = new Comment();
-        // $comment->content = request()->get('content');
-        // $comment->blog_id = $blog->id;
-        // $comment->save();
         Comment::create(
             [
                 'content' => $validatedData['content'],
@@ -27,13 +30,14 @@ class CommentController extends Controller
             ]
         );
 
-        return redirect('/blogs')->with('mssg', 'Comment added');
+        // return redirect('/blogs')->with('mssg', 'Comment added');
+        return back();
     }
     public function destroy($id)
     {
         $comment = Comment::findOrFail($id);
         $comment->delete();
 
-        return redirect('/blogs')->with('mssg', "Comment Deleted");
+        return back()->with('mssg', "Comment Deleted");
     }
 }
