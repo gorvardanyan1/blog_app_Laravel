@@ -2,13 +2,14 @@
 @section('content')
     <div class="profileContainer">
         <div>
-            <img src="{{ $user->profileImage != 0 ? asset('storage/' . $user->profileImage) : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=338&ext=jpg&ga=GA1.1.2082370165.1711238400&semt=ais' }}"
+            <img src="{{ $user->profile_image != 0 ? asset('storage/' . $user->profile_image) : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=338&ext=jpg&ga=GA1.1.2082370165.1711238400&semt=ais' }}"
                 alt="Profile" loading="lazy">
         </div>
         <div>
             <h2>{{ $user->name }}</h2>
             <h4>{{ $user->email }}</h4>
             <h6>{{ $user->created_at }}</h6>
+            <p>{{ $user->bio }}</p>
             <a href="/user/edit">Edit</a>
         </div>
 
@@ -18,7 +19,8 @@
         <a href="/blogs/create">Add Blog</a>
         @foreach ($user->blogs as $blog)
             <div class="blog">
-                <img class="blogAuthorProfileImage" src="{{ asset('storage/' . $blog->user->profileImage) }}" loading="lazy" alt="">
+                <img class="blogAuthorProfileImage"
+                    src="{{ is_null($blog->user->profile_image != 0) ? asset('storage/' . $blog->user->profile_image) : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=338&ext=jpg&ga=GA1.1.2082370165.1711238400&semt=ais' }}">
                 <div class="title">
                     <i>Title:</i>
                     <h3>{{ $blog->title }}</h3>

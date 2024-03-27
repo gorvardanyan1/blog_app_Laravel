@@ -57,9 +57,8 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img class="blogAuthorProfileImage"
-                                        src="{{ asset('storage/' . Auth::user()->profileImage) }}" alt="User"
-                                        style="width: 25px; height:25px">
+                                    <img src="{{ Auth::user()->profile_image != 0 ? asset('storage/' . Auth::user()->profile_image) : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=338&ext=jpg&ga=GA1.1.2082370165.1711238400&semt=ais' }}"
+                                        alt="Profile" loading="lazy"  style="width: 25px; height:25px">
                                     {{ Auth::user()->name }}
                                 </a>
 

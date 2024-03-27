@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
+use function PHPUnit\Framework\isNull;
+
 class UserController extends Controller
 {
 
@@ -26,7 +28,8 @@ class UserController extends Controller
 
         request()->validate([
             'name' => 'required|string|max:255',
-            'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profile_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'bio' => 'string|min:5|max:350'
         ]);
 
 
@@ -36,12 +39,18 @@ class UserController extends Controller
 
             $user->update([
                 'name' => request()->name,
-                'profileImage' => $imagePath
+                'profile_image' => $imagePath,
+                'bio' => request()->bio
             ]);
+
 
             return redirect('/');
         } else {
-            return back()->with('error', 'Failed to update profile.');
+            $user->update([
+                'name' => request()->name,
+                'bio' => request()->bio
+            ]);
+            return redirect('/');
         }
     }
 }
