@@ -12,6 +12,21 @@
             <h4>{{ $user->email }}</h4>
             <h6>{{ $user->created_at }}</h6>
             <p>{{ $user->bio }}</p>
+            @if (Auth::id() !== $user->id)
+                @if (Auth::user()->follows($user))
+                    <form action="{{ route('users.unfollow', $user->id) }}" method="post">
+                        @csrf
+                        <button type="submit">Unfollow</button>
+                    </form>
+                @else
+                    <form action="{{ route('users.follow', $user->id) }}" method="post">
+                        @csrf
+                        <button type="submit">Follow</button>
+                    </form>
+                @endif
+            @endif
+
+
         </div>
     </div>
 

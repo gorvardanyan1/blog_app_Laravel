@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -34,9 +35,18 @@ Route::post('/blogs/{blog}/comment', [CommentController::class, 'store'])->name(
 Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware('auth');
 
 Route::get('/user', [UserController::class, 'user'])->name('user');
-Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
+
 Route::get('/user/edit', [UserController::class, 'edit']);
+
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
+
+
 Route::put('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
+
+
+Route::post('/users/{user}/follow', [FollowerController::class, 'follow'])->middleware('auth')->name('users.follow');
+Route::post('/users/{user}/unfollow', [FollowerController::class, 'unfollow'])->middleware('auth')->name('users.unfollow');
+
 
 Auth::routes();
 
