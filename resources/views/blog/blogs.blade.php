@@ -14,7 +14,8 @@
         @foreach ($blogs as $blog)
             <div class="blog">
 
-                <img class="blogAuthorProfileImage" src="{{ is_null($blog->user->profile_image != 0) ? asset('storage/' . $blog->user->profile_image) : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=338&ext=jpg&ga=GA1.1.2082370165.1711238400&semt=ais' }}"
+                <img class="blogAuthorProfileImage"
+                    src="{{ !is_null($blog->user->profile_image) ? asset('storage/' . $blog->user->profile_image) : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=338&ext=jpg&ga=GA1.1.2082370165.1711238400&semt=ais' }}"
                     alt="Profile Image">
                 <div class="title">
                     <i>Title:</i>
@@ -28,7 +29,7 @@
 
                 </div>
                 <a href="/blogs/{{ $blog->id }}">See Blog</a>
-                <a href="/blogs/edit/{{ $blog->id }}">Edit</a>
+
                 <form action="/blogs/{{ $blog->id }}" method="post">
                     @method('delete')
                     @csrf

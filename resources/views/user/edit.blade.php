@@ -20,7 +20,7 @@
                     <input type="file" name="profile_image" id="users_profile">
                 </div>
                 <div>
-                    <textarea name="bio" id="" cols="30" rows="10" >{{ Auth::user()->bio}}</textarea>
+                    <textarea name="bio" id="bio" cols="30" rows="10" >{{ Auth::user()->bio}}</textarea>
                 </div>
                 <div>
                     <input type="submit" value="Edit">

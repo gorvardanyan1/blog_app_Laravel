@@ -20,7 +20,7 @@
         @foreach ($user->blogs as $blog)
             <div class="blog">
                 <img class="blogAuthorProfileImage"
-                    src="{{ is_null($blog->user->profile_image != 0) ? asset('storage/' . $blog->user->profile_image) : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=338&ext=jpg&ga=GA1.1.2082370165.1711238400&semt=ais' }}">
+                    src="{{ !is_null($blog->user->profile_image) ? asset('storage/' . $blog->user->profile_image) : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=338&ext=jpg&ga=GA1.1.2082370165.1711238400&semt=ais' }}">
                 <div class="title">
                     <i>Title:</i>
                     <h3>{{ $blog->title }}</h3>
