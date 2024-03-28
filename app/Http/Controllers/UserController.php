@@ -12,11 +12,17 @@ use function PHPUnit\Framework\isNull;
 class UserController extends Controller
 {
 
-    public function show()
+    public function user()
     {
         return view('user.user', ["user" => Auth::user()]);
     }
 
+    public function show($id)
+    {
+        $user = User::findOrfail($id);
+
+        return view('user.show', ['user' => $user]);
+    }
     public function edit()
     {
         return view('user.edit');

@@ -17,6 +17,7 @@
                 <img class="blogAuthorProfileImage"
                     src="{{ !is_null($blog->user->profile_image) ? asset('storage/' . $blog->user->profile_image) : 'https://img.freepik.com/free-vector/isolated-young-handsome-man-different-poses-white-background-illustration_632498-859.jpg?size=338&ext=jpg&ga=GA1.1.2082370165.1711238400&semt=ais' }}"
                     alt="Profile Image">
+                <a href="{{ route('user.show', $blog->user->id) }}">{{ $blog->user->name }}</a>
                 <div class="title">
                     <i>Title:</i>
                     <h3>{{ $blog->title }}</h3>
@@ -30,11 +31,7 @@
                 </div>
                 <a href="/blogs/{{ $blog->id }}">See Blog</a>
 
-                <form action="/blogs/{{ $blog->id }}" method="post">
-                    @method('delete')
-                    @csrf
-                    <input type="submit" value="Delete">
-                </form>
+
             </div>
         @endforeach
     </div>
